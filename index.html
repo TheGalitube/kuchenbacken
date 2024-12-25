@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuchenbacken - Willkommen</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/background.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .drop {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+            animation: rain linear infinite;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .site-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .site-subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .link-button {
+            display: block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="rain"></div>
+    <div class="container">
+        <h1 class="site-title">Willkommen auf meiner Website</h1>
+
+        <div class="category">
+            <div class="category-title">Primeblocks</div>
+            <a href="https://primeblocks.net" class="link-button">Primeblocks Website</a>
+            <a href="https://discord.gg/primeblocks" class="link-button">Primeblocks Discord</a>
+            <a href="https://wiki.primeblocks.net" class="link-button">Primeblocks Wiki</a>
+        </div>
+
+        <div class="category">
+            <div class="category-title">Social Media</div>
+            <a href="https://www.youtube.com/@KuchenGHG" class="link-button">YouTube</a>
+            <a href="https://www.twitch.tv/einfxchkuchen" class="link-button">Twitch</a>
+            <a href="https://onlyfans.wtf/kuchen_backen" class="link-button">OnlyFans</a>
+            <a href="https://discord.gg/GcaNNuZG" class="link-button">Discord</a>
+        </div>
+    </div>
+
+    <script>
+        function createRain() {
+            const rainContainer = document.querySelector('.rain');
+            const dropCount = 100;
+
+            for (let i = 0; i < dropCount; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'drop';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
+                drop.style.opacity = Math.random();
+                drop.style.animationDelay = `${Math.random() * 2}s`;
+                rainContainer.appendChild(drop);
+            }
+        }
+
+        createRain();
+    </script>
+</body>
+</html>
